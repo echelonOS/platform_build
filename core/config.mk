@@ -229,8 +229,8 @@ FIND_LEAVES_EXCLUDES := $(addprefix --prune=, $(SCAN_EXCLUDE_DIRS) .repo .git)
 $(call project-set-path-variant,ril,TARGET_RIL_VARIANT,hardware/ril)
 
 -include vendor/extra/BoardConfigExtra.mk
-ifneq ($(AOSAP_BUILD),)
-include vendor/aosap/config/BoardConfigAOSAP.mk
+ifneq ($(ECHELON_BUILD),)
+include vendor/echelon/config/BoardConfigEchelon.mk
 endif
 
 # The build system exposes several variables for where to find the kernel
@@ -1148,10 +1148,10 @@ include $(BUILD_SYSTEM)/ninja_config.mk
 include $(BUILD_SYSTEM)/soong_config.mk
 endif
 
-ifneq ($(AOSAP_BUILD),)
+ifneq ($(ECHELON_BUILD),)
 ## We need to be sure the global selinux policies are included
 ## last, to avoid accidental resetting by device configs
-$(eval include device/aosap/sepolicy/common/sepolicy.mk)
+$(eval include device/echelon/sepolicy/common/sepolicy.mk)
 endif
 
 # Include any vendor specific config.mk file

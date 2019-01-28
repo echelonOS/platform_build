@@ -175,9 +175,9 @@ include $(BUILD_SYSTEM)/node_fns.mk
 include $(BUILD_SYSTEM)/product.mk
 include $(BUILD_SYSTEM)/device.mk
 
-# A AOSAP build needs only the AOSAP product makefiles.
-ifneq ($(AOSAP_BUILD),)
-  all_product_configs := $(shell find device -path "*/$(AOSAP_BUILD)/aosap.mk")
+# A Echelon build needs only the Echelon product makefiles.
+ifneq ($(ECHELON_BUILD),)
+  all_product_configs := $(shell find device -path "*/$(ECHELON_BUILD)/echelon_*.mk")
 else
   ifneq ($(strip $(TARGET_BUILD_APPS)),)
   # An unbundled app build needs only the core product makefiles.
@@ -188,9 +188,9 @@ else
   # files in the tree.
   all_product_configs := $(get-all-product-makefiles)
   endif # TARGET_BUILD_APPS
-endif # AOSAP_BUILD
+endif # ECHELON_BUILD
 
-ifeq ($(AOSAP_BUILD),)
+ifeq ($(ECHELON_BUILD),)
 
 # Find the product config makefile for the current product.
 # all_product_configs consists items like:
